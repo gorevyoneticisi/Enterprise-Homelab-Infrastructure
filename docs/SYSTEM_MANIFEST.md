@@ -1,4 +1,4 @@
-# 🏰 Server Inventory & Status Report
+# Server Inventory & Status Report
 
 **Host:** `GorevYoneticisi` (Task Manager)
 **Role:** Primary Compute Node / Hybrid-Cloud Gateway
