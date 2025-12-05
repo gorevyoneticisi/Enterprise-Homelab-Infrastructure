@@ -37,7 +37,7 @@ It utilizes a **Public VPS** as a transparent reverse proxy and firewall sentry.
 
 ## 🖥 Hardware & System Specifications
 
-The system is optimized for high-performance computing within a compact thermal envelope, maximizing efficiency and minimizing power consumption.
+The system is optimized for high-performance computing within a compact thermal envelope, utilizing a tiered storage architecture.
 
 | Component | Specification | Usage Notes |
 | :--- | :--- | :--- |
@@ -45,10 +45,40 @@ The system is optimized for high-performance computing within a compact thermal 
 | **CPU** | Intel Core i3-6300 @ 3.80GHz | 2 Cores / 4 Threads |
 | **RAM** | 12 GB DDR4 | 11Gi Usable (High availability reserved for VM operations) |
 | **OS** | Ubuntu 24.04.3 LTS | Kernel `6.8.0-88-generic` |
-| **Boot Storage** | NVMe SSD (`/dev/nvme0n1p1`) | 234GB - OS, Docker Overlay, VM Disks (QCOW2) |
-| **Bulk Storage** | SATA HDD (`/dev/sdd2`) | 500GB - Mounted via UUID at `/mnt/sdd2` for Media & Archives |
-| **Graphics** | Intel HD 530 | Quicksync capability for media transcoding |
+| **Primary Disk** | 500GB SATA SSD (`sda`) | **OS Boot**, LVM Root, Docker Overlay |
+| **Fast Storage** | 256GB NVMe (`nvme0n1`) | **VM Storage**, Fast I/O Containers |
+| **Bulk Storage** | 3x500GB SATA HDD (`sdb, sdc, sdd`) | **Media**, Cold Storage (NTFS Formatted) |
 | **Power** | ~2.2W Idle / 15W Load | Highly efficient for 24/7 operation |
+
+---
+
+## 💾 Storage & Backup Strategy
+
+The storage is architected into three distinct tiers for performance and capacity management.
+
+### Storage Layout
+* **Tier 1 (OS/System):** `/dev/mapper/ubuntu--vg-ubuntu--lv` (EXT4) on **SATA SSD**.
+    * *Hosts:* Linux OS, Docker Images, System Configs.
+* **Tier 2 (Performance):** `/mnt/nvme256_nvme0n1p1` (EXT4) on **NVMe**.
+    * *Hosts:* KVM Virtual Machine Disks (QCOW2), High-I/O Application Data.
+* **Tier 3 (Capacity):** `/mnt/sdd2` (NTFS) on **HDD**.
+    * *Hosts:* Media Libraries (Movies/Music), Archives.
+
+### Backup Strategy
+* **Tool:** Duplicati
+* **Schedule:** Daily @ 04:00 AM
+* **Target:** Google Drive (2TB) - AES-256 Encrypted
+* **Retention:** Smart Retention Policy (7 Days / 4 Weeks / 12 Months)
+
+#### Backup Manifest (Source Mapping)
+The backup container is mapped to the host root (`/`) via `/source`.
+
+* ✅ `/source/etc` (System Configs, Firewall Rules, WireGuard Keys, Fstab)
+* ✅ `/source/DATA/AppData` (Docker Container Configs, Databases)
+* ✅ `/source/home/taskmanager` (User Scripts, Shell History)
+* ✅ `/source/mnt/sdd2/music` (FLAC Media Library)
+
+*Exclusions: `/var/lib/docker` (Volatile data), `/var/lib/libvirt/images` (VM Disks - backed up separately via snapshot).*
 
 ---
 
@@ -215,4 +245,10 @@ docker ps --format "table {{.Names}}\t{{.Status}}"
 
 # Check Firewall NAT Rules
 sudo iptables -t nat -S
+```
 
+---
+**Maintainer:** TaskManager
+**Documentation Generated:** December 2025
+
+*Disclaimer: System architecture, configuration, and engineering implementation are original work. This documentation file was polished by AI for formatting and clarity.*
