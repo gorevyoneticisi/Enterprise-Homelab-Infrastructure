@@ -1,0 +1,62 @@
+name: big-bear-dashdot
+services:
+    app:
+        cpu_shares: 90
+        command: []
+        deploy:
+            resources:
+                limits:
+                    memory: "12424577024"
+        image: mauricenino/dashdot:latest
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashdot.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 3001
+              published: "3066"
+              protocol: tcp
+        privileged: true
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/$AppID
+              target: /mnt/host
+              bind:
+                create_host_path: true
+        x-casaos:
+            ports:
+                - container: "3001"
+                  description:
+                    en_us: 'Container Port: 3001'
+            volumes:
+                - container: /mnt/host
+                  description:
+                    en_us: 'Container Path: /mnt/host'
+networks:
+    default:
+        name: big-bear-dashdot_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: About A simple, modern server dashboard, primarily used by smaller private servers.
+    developer: mauricenino
+    hostname: ""
+    icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/dashdot.png
+    index: /
+    is_uncontrolled: false
+    main: app
+    port_map: "3066"
+    scheme: http
+    store_app_id: big-bear-dashdot
+    tagline:
+        en_us: dash. - a modern server dashboard
+    thumbnail: ""
+    title:
+        custom: ""
+        en_us: Dashdot

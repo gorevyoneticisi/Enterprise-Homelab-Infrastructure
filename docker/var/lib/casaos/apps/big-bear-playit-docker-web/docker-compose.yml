@@ -1,0 +1,56 @@
+name: big-bear-playit-docker-web
+services:
+    big-bear-playit-docker-web:
+        container_name: big-bear-playit-docker-web
+        environment:
+            WEBUI_PORT: "8008"
+        image: wisdomsky/playit-docker-web:1.1
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/playit-docker-web/logo.png
+        network_mode: host
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/$AppID/config
+              target: /config
+              bind:
+                create_host_path: true
+        x-casaos:
+            envs:
+                - container: WEBUI_PORT
+                  description:
+                    en_us: 'Container Environment Variable: WEBUI_PORT'
+            ports:
+                - container: "8008"
+                  description:
+                    en_us: 'Container Port: 8008'
+            volumes:
+                - container: /config
+                  description:
+                    en_us: 'Container Path: /config'
+networks:
+    default:
+        name: big-bear-playit-docker-web_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: Playit.gg is a global proxy that allows anyone to host a server without port forwarding. We use tunneling. Only the server needs to run the program, not every player!
+    developer: wisdomsky
+    icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/playit-docker-web/logo.png
+    is_uncontrolled: false
+    main: big-bear-playit-docker-web
+    port_map: "8008"
+    store_app_id: big-bear-playit-docker-web
+    tagline:
+        en_us: Playit.gg is a global proxy that allows anyone to host a server without port forwarding.
+    thumbnail: ""
+    tips:
+        before_install:
+            en_us: |
+                Read this before installing: https://community.bigbeartechworld.com/t/added-playit-docker-web-to-bigbearcasaos/2276?u=dragonfire1119
+    title:
+        en_us: Playit Docker Web

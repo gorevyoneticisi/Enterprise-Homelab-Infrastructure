@@ -1,0 +1,36 @@
+name: joyful_richard
+services:
+    main_app:
+        cpu_shares: 90
+        command: []
+        deploy:
+            resources:
+                limits:
+                    memory: "12424577024"
+        environment:
+            WATCHTOWER_CLEANUP: "true"
+            WATCHTOWER_POLL_INTERVAL: "86400"
+        image: containrrr/watchtower:latest
+        labels:
+            icon: https://icon.casaos.io/main/all/watchtower.png
+        network_mode: bridge
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /var/run/docker.sock
+              target: /var/run/docker.sock
+networks:
+    default:
+        name: joyful_richard_default
+x-casaos:
+    author: self
+    category: self
+    hostname: ""
+    icon: https://icon.casaos.io/main/all/watchtower.png
+    index: /
+    is_uncontrolled: false
+    port_map: ""
+    scheme: http
+    store_app_id: joyful_richard
+    title:
+        custom: Watchtower
