@@ -42,13 +42,13 @@ The system is optimized for high-performance computing within a compact thermal 
 | Component | Specification | Usage Notes |
 | :--- | :--- | :--- |
 | **Host Model** | Lenovo ThinkCentre M710q "Tiny" | Ultra-Small Form Factor |
-| **CPU** | Intel Core i3-6300 @ 3.80GHz | 2 Cores / 4 Threads |
-| **RAM** | 12 GB DDR4 | 11Gi Usable (High availability reserved for VM operations) |
+| **CPU** | Intel Core i7 7700 @ 3.80GHz (-70 mv Undervolted) | 4 Cores / 8 Threads |
+| **RAM** | 12 GB DDR4 | 11Gi Usable + 22 GB swap from NVMe Drive (High availability reserved for VM operations) |
 | **OS** | Ubuntu 24.04.3 LTS | Kernel `6.8.0-88-generic` |
 | **Primary Disk** | 500GB SATA SSD (`sda`) | **OS Boot**, LVM Root, Docker Overlay |
 | **Fast Storage** | 256GB NVMe (`nvme0n1`) | **VM Storage**, Fast I/O Containers |
 | **Bulk Storage** | 3x500GB SATA HDD (`sdb, sdc, sdd`) | **Media**, Cold Storage (NTFS Formatted) |
-| **Power** | ~2.2W Idle / 15W Load | Highly efficient for 24/7 operation |
+| **Power** | ~2.2W CPU Idle / 20W average outlet power draw / 80W Load at max | Highly efficient for 24/7 operation |
 
 ---
 
