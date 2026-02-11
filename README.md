@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/Status-Operational-success?style=for-the-badge\&color=2ea44f)
 ![OS](https://img.shields.io/badge/OS-Ubuntu_24.04_LTS-E95420?style=for-the-badge\&logo=ubuntu)
-![Kernel](https://img.shields.io/badge/Kernel-6.8.0--88--generic-gray?style=for-the-badge\&logo=linux)
+![Kernel](https://img.shields.io/badge/Kernel-6.8.0-100--generic-gray?style=for-the-badge\&logo=linux)
 ![Docker](https://img.shields.io/badge/Docker-CasaOS-0091E2?style=for-the-badge\&logo=docker)
 ![Security](https://img.shields.io/badge/Security-Zero_Trust_&_CrowdSec-green?style=for-the-badge\&logo=cloudflare)
 
@@ -274,8 +274,13 @@ The backup container is mapped to the host root (`/`) via `/source` to ensure fu
 
 ### Installed Utilities
 
-The environment is equipped with a comprehensive custom toolset for diagnostics and management:
-`ncdu`, `neofetch`, `htop`, `wireguard`, `tailscale`, `ufw`, `fail2ban`, `crowdsec`, `git`, `nano`.
+The environment is equipped with a comprehensive custom toolset for diagnostics and management:  
+`btop`, `tmux`, `ncdu`, `neofetch`, `git`, `jq`, `curl`, `rsync`, `docker` (ce/cli/compose/buildx), `nmap`, `tcpdump`, `mtr-tiny`, `strace`, `smartmontools`, `virt-manager`/`libvirt`/`qemu`.
+
+### Firmware / Reverse Engineering Tooling (Personal Lab)
+
+Used for device firmware analysis and modding workflows:
+`binwalk` and related firmware analysis tools (as needed).
 
 ### Disaster Recovery Commands
 
