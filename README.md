@@ -98,49 +98,46 @@ The backup container is mapped to the host root (`/`) via `/source`.
 ## Network Topology & Traffic Flow
 
 ### Traffic Flow Diagram
-
 ```mermaid
 graph TD
     %% Nodes
-    User((Internet User))
-    CF[Cloudflare DNS & WAF]
-    VPS1[VPS Gateway (Primary) 43.229.x.x]
-    VPS2[VPS Gateway (EU Peering) Germany]
-    
-    subgraph "Public Cloud Layer"
-        FW_VPS1[CrowdSec + IPTables Firewall (Primary VPS)]
-        WG_VPS1[WireGuard Interface 10.88.88.1]
-        FW_VPS2[Firewall (Germany VPS)]
-        WG_VPS2[WireGuard Peer (Germany VPS)]
+    U((Internet User))
+    CF[Cloudflare DNS and WAF]
+    VPS1[VPS Gateway Primary 43.229.x.x]
+    VPS2[VPS Gateway EU Peering Germany]
+
+    subgraph PCL[Public Cloud Layer]
+        FW1[CrowdSec and Firewall Primary]
+        WG1[WireGuard Peer Primary 10.88.88.1]
+        FW2[Firewall Germany]
+        WG2[WireGuard Peer Germany]
     end
-    
-    subgraph "Secure Tunnel"
-        WG_LINK1[<== WireGuard Encrypted Tunnel ==>]
+
+    subgraph TUN[Secure Tunnel]
+        WGL[WireGuard Encrypted Tunnel]
     end
-    
-    subgraph "Private Homelab Node (192.168.1.xxx)"
-        WG_HOME[Homelab Interface 10.88.88.2]
+
+    subgraph HOME[Private Homelab Node 192.168.1.xxx]
+        WGH[Homelab WireGuard 10.88.88.2]
         NPM[Nginx Proxy Manager]
-        Docker[Docker Containers]
+        DOCK[Docker Containers]
         KVM[Windows Server VM]
     end
 
     %% Connections
-    User -->|HTTPS 443| CF
-    CF -->|Filtered Traffic| VPS1
-    VPS1 --> FW_VPS1 --> WG_VPS1
+    U -->|HTTPS 443| CF
+    CF --> VPS1
+    VPS1 --> FW1 --> WG1
 
-    %% EU peering (direct)
-    User -->|Direct access (peering)| VPS2
-    VPS2 --> FW_VPS2 --> WG_VPS2
+    U -->|Peering| VPS2
+    VPS2 --> FW2 --> WG2
 
-    %% Tunnel(s) into homelab
-    WG_VPS1 --> WG_LINK1 --> WG_HOME
-    WG_VPS2 --> WG_LINK1
+    WG1 --> WGL --> WGH
+    WG2 --> WGL
 
-    WG_HOME --> NPM
-    NPM -->|Route / SSL Termination| Docker
-    NPM -->|Route / Game Traffic| KVM
+    WGH --> NPM
+    NPM -->|SSL Termination| DOCK
+    NPM -->|Game Traffic| KVM
 ```
 
 ---
@@ -230,7 +227,7 @@ All services are containerized via Docker (managed by CasaOS) and proxied via Ng
 - **SearXNG:** metasearch component used by the local AI pipeline.
 - **OpenWebUI:** UI + orchestration frontend for interacting with the local LLM.
 
-> Note: Qdrant/SearXNG/OpenWebUI are connected over Tailscale to your laptop where you run Qwen 2.5 14B (Q5) as the main inference engine.
+> Note: Qdrant/SearXNG/OpenWebUI are connected over Tailscale to my personal computer where I run Qwen 2.5 14B (Q5) as the main inference engine.
 
 ---
 
