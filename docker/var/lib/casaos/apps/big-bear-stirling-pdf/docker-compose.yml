@@ -1,0 +1,109 @@
+name: big-bear-stirling-pdf
+services:
+    big-bear-stirling-pdf:
+        cpu_shares: 90
+        command: []
+        container_name: big-bear-stirling-pdf
+        deploy:
+            resources:
+                limits:
+                    memory: "12424577024"
+        environment:
+            CSRF_DISABLED: "false"
+            DEFAULT_LOCALE: en-US
+            DOCKER_ENABLE_SECURITY: "false"
+            INSTALL_BOOK_AND_ADVANCED_HTML_OPS: "false"
+            LANGS: en_US
+            SECURITY_ENABLE_LOGIN: "true"
+            SECURITY_INITIALLOGIN_PASSWORD: <HIDDEN>
+            SECURITY_INITIALLOGIN_USERNAME: <HIDDEN>
+        hostname: big-bear-stirling-pdf
+        image: stirlingtools/stirling-pdf:latest
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stirling-pdf/logo.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 8080
+              published: "8087"
+              protocol: tcp
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/big-bear-stirling-pdf/tessdata
+              target: /usr/share/tessdata
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /DATA/AppData/big-bear-stirling-pdf/configs
+              target: /configs
+              bind:
+                create_host_path: true
+        x-casaos:
+            envs:
+                - container: DOCKER_ENABLE_SECURITY
+                  description:
+                    en_us: 'Container Variable: DOCKER_ENABLE_SECURITY'
+                - container: SECURITY_ENABLE_LOGIN
+                  description:
+                    en_us: 'Container Variable: SECURITY_ENABLE_LOGIN'
+                - container: SECURITY_INITIALLOGIN_USERNAME
+                  description:
+                    en_us: 'Container Variable: SECURITY_INITIALLOGIN_USERNAME'
+                - container: SECURITY_INITIALLOGIN_PASSWORD
+                  description:
+                    en_us: 'Container Variable: SECURITY_INITIALLOGIN_PASSWORD'
+                - container: CSRF_DISABLED
+                  description:
+                    en_us: 'Container Variable: CSRF_DISABLED'
+                - container: DEFAULT_LOCALE
+                  description:
+                    en_us: 'Container Variable: DEFAULT_LOCALE'
+                - container: INSTALL_BOOK_AND_ADVANCED_HTML_OPS
+                  description:
+                    en_us: 'Container Variable: INSTALL_BOOK_AND_ADVANCED_HTML_OPS'
+                - container: LANGS
+                  description:
+                    en_us: 'Container Variable: LANGS'
+            ports:
+                - container: "8080"
+                  description:
+                    en_us: 'Container Port: 8080'
+            volumes:
+                - container: /usr/share/tessdata
+                  description:
+                    en_us: 'Container Path: /usr/share/tessdata'
+                - container: /configs
+                  description:
+                    en_us: 'Container Path: /configs'
+networks:
+    default:
+        name: big-bear-stirling-pdf_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: Stirling PDF - Local hosted web based PDF editor
+    developer: stirlingtools
+    hostname: ""
+    icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-universal-apps/apps/stirling-pdf/logo.png
+    index: /
+    is_uncontrolled: false
+    main: big-bear-stirling-pdf
+    port_map: "8087"
+    scheme: http
+    store_app_id: big-bear-stirling-pdf
+    tagline:
+        en_us: Stirling PDF - Local hosted web based PDF editor
+    thumbnail: ""
+    tips:
+        before_install:
+            en_us: |
+                Read this before installing: https://community.bigbeartechworld.com/t/added-stirling-pdf-to-bigbearcasaos/2265#p-4248-documentation-3
+    title:
+        custom: ""
+        en_us: Stirling-PDF

@@ -1,0 +1,64 @@
+name: big-bear-convertx
+services:
+    big-bear-convertx:
+        container_name: big-bear-convertx
+        environment:
+            HTTP_ALLOWED: "true"
+            JWT_SECRET: <HIDDEN>
+        image: ghcr.io/c4illin/convertx:v0.14.1
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 3000
+              published: "3000"
+              protocol: tcp
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/$AppID/data
+              target: /app/data
+              bind:
+                create_host_path: true
+        x-casaos:
+            envs:
+                - container: JWT_SECRET
+                  description:
+                    en_us: JWT Secret
+                - container: HTTP_ALLOWED
+                  description:
+                    en_us: HTTP Allowed
+            volumes:
+                - container: /app/data
+                  description:
+                    en_us: 'Container Path: /app/data'
+networks:
+    default:
+        name: big-bear-convertx_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: A self-hosted online file converter. Supports over a thousand different formats. Written with TypeScript, Bun and Elysia.
+    developer: C4illin
+    icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/logo.png
+    is_uncontrolled: false
+    main: big-bear-convertx
+    port_map: "3000"
+    screenshot_link:
+        - https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/screenshot-1.png
+    store_app_id: big-bear-convertx
+    tagline:
+        en_us: "\U0001F4BE Self-hosted online file converter. Supports 1000+ formats ⚙️"
+    thumbnail: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/convertx/thumbnail.png
+    tips:
+        before_install:
+            en_us: |
+                Read this before installing: https://community.bigbeartechworld.com/t/add-convertx-to-bigbearcasaos/3232#p-5599-documentation-5
+    title:
+        en_us: ConvertX

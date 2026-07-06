@@ -1,0 +1,51 @@
+name: big-bear-myspeed
+services:
+    app:
+        image: germannewsmaker/myspeed:1.0.9
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/myspeed/logo.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 5216
+              published: "5216"
+              protocol: tcp
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/$AppID/data
+              target: /myspeed/data
+              bind:
+                create_host_path: true
+        x-casaos:
+            ports:
+                - container: "5216"
+                  description:
+                    en_us: 'Container Port: 5216'
+            volumes:
+                - container: /myspeed/data
+                  description:
+                    en_us: 'Container Path: /myspeed/data'
+networks:
+    default:
+        name: big-bear-myspeed_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: MySpeed is a speed test analysis software that records your internet speed for up to 30 days.
+    developer: gnmyt
+    icon: https://cdn.jsdelivr.net/gh/bigbeartechworld/big-bear-casaos/Apps/myspeed/logo.png
+    is_uncontrolled: false
+    main: app
+    port_map: "5216"
+    store_app_id: big-bear-myspeed
+    tagline:
+        en_us: A speed test analysis software that shows your internet speed for up to 30 days
+    thumbnail: ""
+    title:
+        en_us: MySpeed

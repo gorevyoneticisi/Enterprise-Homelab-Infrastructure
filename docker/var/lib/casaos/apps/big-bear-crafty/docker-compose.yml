@@ -1,0 +1,516 @@
+name: big-bear-crafty
+services:
+    big-bear-crafty:
+        container_name: big-bear-crafty
+        environment:
+            TZ: UTC
+        image: registry.gitlab.com/crafty-controller/crafty-4:4.4.11
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/crafty-controller.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 8443
+              published: "8443"
+              protocol: tcp
+            - mode: ingress
+              target: 8123
+              published: "8123"
+              protocol: tcp
+            - mode: ingress
+              target: 19132
+              published: "19132"
+              protocol: udp
+            - mode: ingress
+              target: 25500
+              published: "25500"
+              protocol: tcp
+            - mode: ingress
+              target: 25501
+              published: "25501"
+              protocol: tcp
+            - mode: ingress
+              target: 25502
+              published: "25502"
+              protocol: tcp
+            - mode: ingress
+              target: 25503
+              published: "25503"
+              protocol: tcp
+            - mode: ingress
+              target: 25504
+              published: "25504"
+              protocol: tcp
+            - mode: ingress
+              target: 25505
+              published: "25505"
+              protocol: tcp
+            - mode: ingress
+              target: 25506
+              published: "25506"
+              protocol: tcp
+            - mode: ingress
+              target: 25507
+              published: "25507"
+              protocol: tcp
+            - mode: ingress
+              target: 25508
+              published: "25508"
+              protocol: tcp
+            - mode: ingress
+              target: 25509
+              published: "25509"
+              protocol: tcp
+            - mode: ingress
+              target: 25510
+              published: "25510"
+              protocol: tcp
+            - mode: ingress
+              target: 25511
+              published: "25511"
+              protocol: tcp
+            - mode: ingress
+              target: 25512
+              published: "25512"
+              protocol: tcp
+            - mode: ingress
+              target: 25513
+              published: "25513"
+              protocol: tcp
+            - mode: ingress
+              target: 25514
+              published: "25514"
+              protocol: tcp
+            - mode: ingress
+              target: 25515
+              published: "25515"
+              protocol: tcp
+            - mode: ingress
+              target: 25516
+              published: "25516"
+              protocol: tcp
+            - mode: ingress
+              target: 25517
+              published: "25517"
+              protocol: tcp
+            - mode: ingress
+              target: 25518
+              published: "25518"
+              protocol: tcp
+            - mode: ingress
+              target: 25519
+              published: "25519"
+              protocol: tcp
+            - mode: ingress
+              target: 25520
+              published: "25520"
+              protocol: tcp
+            - mode: ingress
+              target: 25521
+              published: "25521"
+              protocol: tcp
+            - mode: ingress
+              target: 25522
+              published: "25522"
+              protocol: tcp
+            - mode: ingress
+              target: 25523
+              published: "25523"
+              protocol: tcp
+            - mode: ingress
+              target: 25524
+              published: "25524"
+              protocol: tcp
+            - mode: ingress
+              target: 25525
+              published: "25525"
+              protocol: tcp
+            - mode: ingress
+              target: 25526
+              published: "25526"
+              protocol: tcp
+            - mode: ingress
+              target: 25527
+              published: "25527"
+              protocol: tcp
+            - mode: ingress
+              target: 25528
+              published: "25528"
+              protocol: tcp
+            - mode: ingress
+              target: 25529
+              published: "25529"
+              protocol: tcp
+            - mode: ingress
+              target: 25530
+              published: "25530"
+              protocol: tcp
+            - mode: ingress
+              target: 25531
+              published: "25531"
+              protocol: tcp
+            - mode: ingress
+              target: 25532
+              published: "25532"
+              protocol: tcp
+            - mode: ingress
+              target: 25533
+              published: "25533"
+              protocol: tcp
+            - mode: ingress
+              target: 25534
+              published: "25534"
+              protocol: tcp
+            - mode: ingress
+              target: 25535
+              published: "25535"
+              protocol: tcp
+            - mode: ingress
+              target: 25536
+              published: "25536"
+              protocol: tcp
+            - mode: ingress
+              target: 25537
+              published: "25537"
+              protocol: tcp
+            - mode: ingress
+              target: 25538
+              published: "25538"
+              protocol: tcp
+            - mode: ingress
+              target: 25539
+              published: "25539"
+              protocol: tcp
+            - mode: ingress
+              target: 25540
+              published: "25540"
+              protocol: tcp
+            - mode: ingress
+              target: 25541
+              published: "25541"
+              protocol: tcp
+            - mode: ingress
+              target: 25542
+              published: "25542"
+              protocol: tcp
+            - mode: ingress
+              target: 25543
+              published: "25543"
+              protocol: tcp
+            - mode: ingress
+              target: 25544
+              published: "25544"
+              protocol: tcp
+            - mode: ingress
+              target: 25545
+              published: "25545"
+              protocol: tcp
+            - mode: ingress
+              target: 25546
+              published: "25546"
+              protocol: tcp
+            - mode: ingress
+              target: 25547
+              published: "25547"
+              protocol: tcp
+            - mode: ingress
+              target: 25548
+              published: "25548"
+              protocol: tcp
+            - mode: ingress
+              target: 25549
+              published: "25549"
+              protocol: tcp
+            - mode: ingress
+              target: 25550
+              published: "25550"
+              protocol: tcp
+            - mode: ingress
+              target: 25551
+              published: "25551"
+              protocol: tcp
+            - mode: ingress
+              target: 25552
+              published: "25552"
+              protocol: tcp
+            - mode: ingress
+              target: 25553
+              published: "25553"
+              protocol: tcp
+            - mode: ingress
+              target: 25554
+              published: "25554"
+              protocol: tcp
+            - mode: ingress
+              target: 25555
+              published: "25555"
+              protocol: tcp
+            - mode: ingress
+              target: 25556
+              published: "25556"
+              protocol: tcp
+            - mode: ingress
+              target: 25557
+              published: "25557"
+              protocol: tcp
+            - mode: ingress
+              target: 25558
+              published: "25558"
+              protocol: tcp
+            - mode: ingress
+              target: 25559
+              published: "25559"
+              protocol: tcp
+            - mode: ingress
+              target: 25560
+              published: "25560"
+              protocol: tcp
+            - mode: ingress
+              target: 25561
+              published: "25561"
+              protocol: tcp
+            - mode: ingress
+              target: 25562
+              published: "25562"
+              protocol: tcp
+            - mode: ingress
+              target: 25563
+              published: "25563"
+              protocol: tcp
+            - mode: ingress
+              target: 25564
+              published: "25564"
+              protocol: tcp
+            - mode: ingress
+              target: 25565
+              published: "25565"
+              protocol: tcp
+            - mode: ingress
+              target: 25566
+              published: "25566"
+              protocol: tcp
+            - mode: ingress
+              target: 25567
+              published: "25567"
+              protocol: tcp
+            - mode: ingress
+              target: 25568
+              published: "25568"
+              protocol: tcp
+            - mode: ingress
+              target: 25569
+              published: "25569"
+              protocol: tcp
+            - mode: ingress
+              target: 25570
+              published: "25570"
+              protocol: tcp
+            - mode: ingress
+              target: 25571
+              published: "25571"
+              protocol: tcp
+            - mode: ingress
+              target: 25572
+              published: "25572"
+              protocol: tcp
+            - mode: ingress
+              target: 25573
+              published: "25573"
+              protocol: tcp
+            - mode: ingress
+              target: 25574
+              published: "25574"
+              protocol: tcp
+            - mode: ingress
+              target: 25575
+              published: "25575"
+              protocol: tcp
+            - mode: ingress
+              target: 25576
+              published: "25576"
+              protocol: tcp
+            - mode: ingress
+              target: 25577
+              published: "25577"
+              protocol: tcp
+            - mode: ingress
+              target: 25578
+              published: "25578"
+              protocol: tcp
+            - mode: ingress
+              target: 25579
+              published: "25579"
+              protocol: tcp
+            - mode: ingress
+              target: 25580
+              published: "25580"
+              protocol: tcp
+            - mode: ingress
+              target: 25581
+              published: "25581"
+              protocol: tcp
+            - mode: ingress
+              target: 25582
+              published: "25582"
+              protocol: tcp
+            - mode: ingress
+              target: 25583
+              published: "25583"
+              protocol: tcp
+            - mode: ingress
+              target: 25584
+              published: "25584"
+              protocol: tcp
+            - mode: ingress
+              target: 25585
+              published: "25585"
+              protocol: tcp
+            - mode: ingress
+              target: 25586
+              published: "25586"
+              protocol: tcp
+            - mode: ingress
+              target: 25587
+              published: "25587"
+              protocol: tcp
+            - mode: ingress
+              target: 25588
+              published: "25588"
+              protocol: tcp
+            - mode: ingress
+              target: 25589
+              published: "25589"
+              protocol: tcp
+            - mode: ingress
+              target: 25590
+              published: "25590"
+              protocol: tcp
+            - mode: ingress
+              target: 25591
+              published: "25591"
+              protocol: tcp
+            - mode: ingress
+              target: 25592
+              published: "25592"
+              protocol: tcp
+            - mode: ingress
+              target: 25593
+              published: "25593"
+              protocol: tcp
+            - mode: ingress
+              target: 25594
+              published: "25594"
+              protocol: tcp
+            - mode: ingress
+              target: 25595
+              published: "25595"
+              protocol: tcp
+            - mode: ingress
+              target: 25596
+              published: "25596"
+              protocol: tcp
+            - mode: ingress
+              target: 25597
+              published: "25597"
+              protocol: tcp
+            - mode: ingress
+              target: 25598
+              published: "25598"
+              protocol: tcp
+            - mode: ingress
+              target: 25599
+              published: "25599"
+              protocol: tcp
+            - mode: ingress
+              target: 25600
+              published: "25600"
+              protocol: tcp
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: /DATA/AppData/$AppID/data/backups
+              target: /crafty/backups
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /DATA/AppData/$AppID/data/logs
+              target: /crafty/logs
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /DATA/AppData/$AppID/data/servers
+              target: /crafty/servers
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /DATA/AppData/$AppID/data/config
+              target: /crafty/app/config
+              bind:
+                create_host_path: true
+            - type: bind
+              source: /DATA/AppData/$AppID/data/import
+              target: /crafty/import
+              bind:
+                create_host_path: true
+        x-casaos:
+            envs:
+                - container: TZ
+                  description:
+                    en_us: Timezone
+            ports:
+                - container: "8443"
+                  description:
+                    en_us: 'Container Port: 8443'
+                - container: "8123"
+                  description:
+                    en_us: 'Container Port: 8123'
+                - container: "19132"
+                  description:
+                    en_us: 'Container Port: 19132'
+                - container: 25500-25600
+                  description:
+                    en_us: 'Container Port: 25500-25600'
+            volumes:
+                - container: /crafty/backups
+                  description:
+                    en_us: 'Container Path: /crafty/backups'
+                - container: /crafty/logs
+                  description:
+                    en_us: 'Container Path: /crafty/logs'
+                - container: /crafty/servers
+                  description:
+                    en_us: 'Container Path: /crafty/servers'
+                - container: /crafty/app/config
+                  description:
+                    en_us: 'Container Path: /crafty/app/config'
+                - container: /crafty/import
+                  description:
+                    en_us: 'Container Path: /crafty/import'
+networks:
+    default:
+        name: big-bear-crafty_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: Crafty 4 is the next iteration of our Minecraft Server Wrapper / Controller / Launcher.
+    developer: crafty-controller
+    icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/crafty-controller.png
+    is_uncontrolled: false
+    main: big-bear-crafty
+    port_map: "8443"
+    scheme: https
+    store_app_id: big-bear-crafty
+    tagline:
+        en_us: Crafty Controller
+    thumbnail: ""
+    tips:
+        before_install:
+            en_us: |
+                Before you install Crafty Controller, you need to read the https://community.bigbeartechworld.com/t/added-crafty-controller-to-bigbearcasaos/1013#instructions-3.
+    title:
+        en_us: Crafty Controller

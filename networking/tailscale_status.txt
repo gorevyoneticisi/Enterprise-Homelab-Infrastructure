@@ -1,0 +1,7 @@
+<HIDDEN_IP>  <HIDDEN>            <HIDDEN>  linux    -                                                        
+<HIDDEN_IP>  desktop-<HIDDEN>     <HIDDEN>  windows  active; direct <HIDDEN_IP>:6177, tx 1287764 rx 561804  
+<HIDDEN_IP>   samsung-sm-s918b    <HIDDEN>  android  offline, last seen 4h ago                                
+<HIDDEN_IP>  taskmanager-server  <HIDDEN>,  linux    -                                                        
+
+# Health check:
+

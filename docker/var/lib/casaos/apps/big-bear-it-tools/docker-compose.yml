@@ -1,0 +1,53 @@
+name: big-bear-it-tools
+services:
+    app:
+        cpu_shares: 90
+        command: []
+        container_name: big-bear-it-tools
+        deploy:
+            resources:
+                limits:
+                    memory: "12424577024"
+        hostname: big-bear-it-tools
+        image: corentinth/it-tools:2023.11.2-7d94e11
+        labels:
+            icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/it-tools.png
+        networks:
+            default: null
+        ports:
+            - mode: ingress
+              target: 80
+              published: "8081"
+              protocol: tcp
+        restart: unless-stopped
+        x-casaos:
+            ports:
+                - container: "80"
+                  description:
+                    en_us: 'Container Port: 80'
+networks:
+    default:
+        name: big-bear-it-tools_default
+x-casaos:
+    architectures:
+        - amd64
+        - arm64
+    author: BigBearTechWorld
+    category: BigBearCasaOS
+    description:
+        en_us: Collection of handy online tools for developers, with great UX as a web app.
+    developer: corentinth
+    hostname: ""
+    icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/it-tools.png
+    index: /
+    is_uncontrolled: false
+    main: app
+    port_map: "8081"
+    scheme: http
+    store_app_id: big-bear-it-tools
+    tagline:
+        en_us: IT Tools
+    thumbnail: ""
+    title:
+        custom: ""
+        en_us: IT Tools
