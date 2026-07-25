@@ -48,7 +48,7 @@ The architecture utilizes a dual-layer strategy: **KVM** for heavy OS virtualiza
 ## 4. Security & Network Telemetry
 Security is enforced at the kernel and application level.
 
-* **Tunnel Interface:** `10.0.0.2/24` (WireGuard Site-to-Site to VPS)
+* **Tunnel Interface:** `<HOMELAB_WG_IP>/24` (WireGuard Site-to-Site to VPS)
 * **Management Backdoor:** `100.x.x.x` (Tailscale)
 * **Intrusion Prevention:**
     * [OK] **CrowdSec:** Collaborative IPS parsing logs.

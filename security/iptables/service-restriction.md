@@ -76,7 +76,7 @@ sudo iptables -I INPUT -p tcp --dport 8191 -s 172.17.0.0/16 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 8191 -j DROP
 ```
 
-### Duplicati (Port 8200) — Localhost Only
+### Duplicati (Port 8200) - Localhost Only
 
 **Risk:** Backup data exposure
 
@@ -88,7 +88,7 @@ sudo iptables -I INPUT -p tcp --dport 8200 -s 127.0.0.0/8 -j ACCEPT
 sudo iptables -A INPUT -p tcp --dport 8200 -j DROP
 ```
 
-**Note:** Google Drive backup is outbound — localhost-only binding doesn't break it.
+**Note:** Google Drive backup is outbound - localhost-only binding doesn't break it.
 
 ## Docker-Specific Restrictions
 

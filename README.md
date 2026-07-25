@@ -108,7 +108,7 @@ graph TD
 
     subgraph PCL[Public Cloud Layer]
         FW1[CrowdSec and Firewall Primary]
-        WG1[WireGuard Peer Primary 10.0.0.1]
+        WG1[WireGuard Peer Primary <VPS_WG_IP>]
         FW2[Firewall Germany]
         WG2[WireGuard Peer Germany]
     end
@@ -118,7 +118,7 @@ graph TD
     end
 
     subgraph HOME[Private Homelab Node 192.168.1.xxx]
-        WGH[Homelab WireGuard 10.0.0.2]
+        WGH[Homelab WireGuard <HOMELAB_WG_IP>]
         NPM[Nginx Proxy Manager]
         DOCK[Docker Containers]
         KVM[Windows Server VM]
@@ -143,7 +143,7 @@ graph TD
 ---
 
 Gateway Configuration (VPS)
-The VPS accepts traffic on public ports and rewrites the destination to the Homelab's internal tunnel IP (10.0.0.2).
+The VPS accepts traffic on public ports and rewrites the destination to the Homelab's internal tunnel IP (<HOMELAB_WG_IP>).
 
 Ingress Firewall: Configured to block ALL incoming ports except for Cloudflare IP ranges (for Web traffic) and specific Game Ports.
 
