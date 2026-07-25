@@ -100,31 +100,29 @@ The backup container is mapped to the host root (`/`) via `/source`.
 ### Traffic Flow Diagram
 ```mermaid
 graph TD
-    %% Nodes
     U((Internet User))
     CF[Cloudflare DNS and WAF]
-    VPS1[VPS Gateway Primary x.x.x.x]
-    VPS2[VPS Gateway EU Peering Germany]
+    VPS1[VPS Gateway Primary]
+    VPS2[VPS Gateway EU Peering]
 
-    subgraph PCL[Public Cloud Layer]
+    subgraph Public Cloud Layer
         FW1[CrowdSec and Firewall Primary]
-        WG1[WireGuard Peer Primary <VPS_WG_IP>]
+        WG1[WireGuard Peer Primary]
         FW2[Firewall Germany]
         WG2[WireGuard Peer Germany]
     end
 
-    subgraph TUN[Secure Tunnel]
+    subgraph Secure Tunnel
         WGL[WireGuard Encrypted Tunnel]
     end
 
-    subgraph HOME[Private Homelab Node 192.168.1.xxx]
-        WGH[Homelab WireGuard <HOMELAB_WG_IP>]
+    subgraph Private Homelab Node
+        WGH[Homelab WireGuard]
         NPM[Nginx Proxy Manager]
         DOCK[Docker Containers]
         KVM[Windows Server VM]
     end
 
-    %% Connections
     U -->|HTTPS 443| CF
     CF --> VPS1
     VPS1 --> FW1 --> WG1
